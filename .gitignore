@@ -1,34 +1,47 @@
-# Gradle files
-.gradle/
-build/
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
 
-# Local configuration file (sdk path, etc)
-local.properties
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sln.docstates
 
-# Log/OS Files
-*.log
+# VS Code
+.vscode/
+*.code-workspace
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.aab
-*.apk
-output-metadata.json
-
-# IntelliJ
-*.iml
+# Rider
 .idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+*.sln.iml
 
-# Keystore files
-*.jks
-*.keystore
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+# Node
+node_modules/
+npm-debug.log
 
-# Android Profiling
-*.hprof
+# AkpEngine specific
+*.akp
+Exports/
+Temp/
+.akp-cache/
+
+# OS
+Thumbs.db
