@@ -1,4 +1,5 @@
-using AkpEditor.Mobile.Views;
+using AkpEditor.Mobile.Services;
+using AkpEditor.Mobile.Services.Export;
 
 namespace AkpEditor.Mobile;
 
@@ -27,6 +28,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<EditorPage>();
         builder.Services.AddSingleton<AssetManagerPage>();
         builder.Services.AddSingleton<ProjectSettingsPage>();
+        builder.Services.AddSingleton<ExportPage>();
 
         return builder;
     }
@@ -36,15 +38,19 @@ public static class MauiProgram
         builder.Services.AddSingleton<ViewModels.EditorViewModel>();
         builder.Services.AddSingleton<ViewModels.AssetManagerViewModel>();
         builder.Services.AddSingleton<ViewModels.ProjectSettingsViewModel>();
+        builder.Services.AddSingleton<ViewModels.ExportViewModel>();
 
         return builder;
     }
 
     private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
     {
-        builder.Services.AddSingleton<Services.EditorService>();
-        builder.Services.AddSingleton<Services.ProjectService>();
-        builder.Services.AddSingleton<Services.AssetService>();
+        builder.Services.AddSingleton<EditorService>();
+        builder.Services.AddSingleton<ProjectService>();
+        builder.Services.AddSingleton<AssetDatabaseService>();
+        builder.Services.AddSingleton<AssetPreviewService>();
+        builder.Services.AddSingleton<AssetValidationService>();
+        builder.Services.AddSingleton<ExportManagerService>();
 
         return builder;
     }
