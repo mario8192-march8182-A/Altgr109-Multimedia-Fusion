@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AkpEditor.Mobile.Views.AssetManagerPage"
+             Title="Assets">
+    <Grid RowDefinitions="60,*" Padding="10" RowSpacing="10">
+        <!-- Toolbar -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="5">
+            <Button Text="+ Add Asset" HorizontalOptions="FillAndExpand" />
+            <Button Text="🔄 Refresh" WidthRequest="100" />
+        </HorizontalStackLayout>
+
+        <!-- Assets List -->
+        <CollectionView Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Assets}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Spacing="5" BackgroundColor="#f9f9f9" Margin="0,0,0,5">
+                        <Label Text="{Binding Name}" FontAttributes="Bold" />
+                        <Label Text="{Binding Type}" FontSize="12" Opacity="0.7" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

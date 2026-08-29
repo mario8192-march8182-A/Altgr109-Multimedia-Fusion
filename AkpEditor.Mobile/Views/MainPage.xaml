@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AkpEditor.Mobile.Views.MainPage"
+             Title="AkpEngine - Mobile Editor">
+    <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Welcome to AkpEngine Mobile Editor" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+        <Label Text="Create and edit your 2D games on the go" FontSize="16" HorizontalTextAlignment="Center" />
+        <Button Text="New Project" FontSize="18" Padding="20,10" />
+        <Button Text="Open Project" FontSize="18" Padding="20,10" />
+        <Button Text="Recent Projects" FontSize="18" Padding="20,10" />
+    </VerticalStackLayout>
+</ContentPage>
