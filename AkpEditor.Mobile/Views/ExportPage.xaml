@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AkpEditor.Mobile.Views.ExportPage"
+             Title="Export Project">
+    <Grid RowDefinitions="50,*,80" Padding="15" RowSpacing="10">
+        <!-- Header -->
+        <Label Grid.Row="0" 
+               Text="Export Your Project" 
+               FontSize="24" 
+               FontAttributes="Bold" />
+
+        <!-- Platform Selection -->
+        <Grid Grid.Row="1" RowDefinitions="40,*" RowSpacing="10">
+            <Label Grid.Row="0" 
+                   Text="Select Export Platform" 
+                   FontAttributes="Bold" 
+                   FontSize="16" />
+
+            <CollectionView Grid.Row="1" 
+                           SelectionMode="Multiple" 
+                           ItemsSource="{Binding AvailablePlatforms}"
+                           SelectionChangedCommand="{Binding SelectPlatformsCommand}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                   HorizontalItemSpacing="10" 
+                                   VerticalItemSpacing="10" 
+                                   Columns="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#512BD4" 
+                               CornerRadius="10" 
+                               Padding="10" 
+                               Margin="5" 
+                               HasShadow="True">
+                            <StackLayout Spacing="5" Padding="10">
+                                <Label Text="{Binding PlatformName}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="14" 
+                                       HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding FileExtension}" 
+                                       FontSize="12" 
+                                       Opacity="0.6" 
+                                       HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- Export Button -->
+        <Button Grid.Row="2" 
+                Text="📦 Export Now" 
+                FontSize="18" 
+                Padding="20,10" 
+                Command="{Binding ExportCommand}" 
+                IsEnabled="{Binding SelectedPlatforms.Count, Converter={StaticResource CountToBoolConverter}}" 
+                CornerRadius="10" />
+    </Grid>
+</ContentPage>
