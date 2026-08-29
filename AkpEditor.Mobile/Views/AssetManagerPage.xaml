@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AkpEditor.Mobile.Views.AssetManagerPage"
+             Title="Assets">
+    <Grid RowDefinitions="50,*,120" Padding="10" RowSpacing="5">
+        <!-- Search Bar -->
+        <SearchBar Grid.Row="0" 
+                   Placeholder="Search assets..." 
+                   Text="{Binding SearchQuery}" 
+                   SearchButtonPressed="OnSearchButtonPressed" />
+
+        <!-- Category and Asset Grid -->
+        <Grid Grid.Row="1" ColumnDefinitions="120,*" ColumnSpacing="10">
+            <!-- Categories List -->
+            <CollectionView Grid.Column="0" 
+                           SelectionMode="Single" 
+                           ItemsSource="{Binding Categories}"
+                           SelectionChangedCommand="{Binding SelectCategoryCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5" Spacing="3" BackgroundColor="#f0f0f0" Margin="0,0,0,5" CornerRadius="5">
+                            <Label Text="{Binding Icon}" FontSize="24" HorizontalTextAlignment="Center" />
+                            <Label Text="{Binding Name}" FontSize="10" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Assets Grid -->
+            <Grid Grid.Column="1" RowDefinitions="30,*">
+                <HorizontalStackLayout Grid.Row="0" Spacing="5">
+                    <Button Text="+ Add" 
+                            Command="{Binding AddAssetCommand}" 
+                            WidthRequest="80" 
+                            FontSize="12" />
+                    <Button Text="🔄 Refresh" 
+                            Command="{Binding RefreshAssetsCommand}" 
+                            WidthRequest="80" 
+                            FontSize="12" />
+                    <Button Text="🗑️ Delete" 
+                            Command="{Binding DeleteAssetCommand}" 
+                            WidthRequest="80" 
+                            FontSize="12" 
+                            IsEnabled="{Binding SelectedAsset, Converter={StaticResource StringNullToBoolConverter}}" />
+                </HorizontalStackLayout>
+
+                <!-- Assets List -->
+                <CollectionView Grid.Row="1" 
+                               SelectionMode="Single" 
+                               ItemsSource="{Binding Assets}"
+                               SelectedItem="{Binding SelectedAsset}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="#cccccc" CornerRadius="5" Padding="8" Margin="0,0,0,8" HasShadow="True">
+                                <StackLayout Spacing="3">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="12" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding Type}" FontSize="10" Opacity="0.6" />
+                                    <Label FontSize="9" Opacity="0.5">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{0} • {1:d}">
+                                                <Binding Path="Size" Converter="{StaticResource BytesToStringConverter}" />
+                                                <Binding Path="LastModified" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+
+        <!-- Status Bar -->
+        <StackLayout Grid.Row="2" Padding="5" Spacing="5" BackgroundColor="#f9f9f9" CornerRadius="5">
+            <Label Text="{Binding StatusMessage}" FontSize="12" />
+            <ProgressBar IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" />
+            <Label Text="{Binding Assets.Count, StringFormat='Total: {0} assets'}" FontSize="11" Opacity="0.7" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

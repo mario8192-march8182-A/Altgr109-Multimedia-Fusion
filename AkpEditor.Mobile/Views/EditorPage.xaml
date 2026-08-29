@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AkpEditor.Mobile.Views.EditorPage"
+             Title="Editor">
+    <Grid RowDefinitions="60,*,80" Padding="10" ColumnSpacing="10" RowSpacing="10">
+        <!-- Toolbar -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="5" Padding="5">
+            <Button Text="🖇️ Add" WidthRequest="50" HeightRequest="50" />
+            <Button Text="✏️ Edit" WidthRequest="50" HeightRequest="50" />
+            <Button Text="🗑️ Delete" WidthRequest="50" HeightRequest="50" />
+            <Button Text="⚙️ Properties" WidthRequest="50" HeightRequest="50" />
+        </HorizontalStackLayout>
+
+        <!-- Canvas Area -->
+        <Frame Grid.Row="1" BorderColor="#cccccc" CornerRadius="5" HasShadow="True" Padding="0">
+            <Canvas x:Name="EditorCanvas" BackgroundColor="#f0f0f0" />
+        </Frame>
+
+        <!-- Bottom Controls -->
+        <HorizontalStackLayout Grid.Row="2" Spacing="10" Padding="5">
+            <Button Text="Save" WidthRequest="100" FontSize="16" />
+            <Button Text="Run" WidthRequest="100" FontSize="16" />
+            <Button Text="Undo" WidthRequest="70" FontSize="14" />
+            <Button Text="Redo" WidthRequest="70" FontSize="14" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

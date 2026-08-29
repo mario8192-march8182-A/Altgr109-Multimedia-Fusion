@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AkpEditor.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <TabBar>
+        <ShellContent
+            Title="Editor"
+            ContentTemplate="{DataTemplate local:EditorPage}"
+            Route="editor" />
+        <ShellContent
+            Title="Assets"
+            ContentTemplate="{DataTemplate local:AssetManagerPage}"
+            Route="assets" />
+        <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate local:ProjectSettingsPage}"
+            Route="settings" />
+    </TabBar>
+</Shell>
